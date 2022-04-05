@@ -4,6 +4,7 @@ import { SecondaryButton } from 'app/shared/SecondaryButton';
 import { Logo } from 'app/shared/Logo';
 
 import { AppRoute } from 'routing/AppRoute.enum';
+import { Searchbar } from './Searchbar';
 
 export const Products = () => {
   return (
@@ -12,6 +13,7 @@ export const Products = () => {
       <SecondaryButton as={Link} to={AppRoute.Login}>
         Log in
       </SecondaryButton>
+      <Searchbar />
     </>
   );
 };
