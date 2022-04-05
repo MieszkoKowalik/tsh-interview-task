@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SecondaryButton } from 'app/shared/SecondaryButton';
 import { Logo } from 'app/shared/Logo';
+import { Searchbar } from './Searchbar';
+import { Checkbox } from 'app/shared/Checkbox';
 
 import { AppRoute } from 'routing/AppRoute.enum';
-import { Searchbar } from './Searchbar';
 
 export const Products = () => {
+  const [isActiveChecked, setIsActiveChecked] = useState(false);
+  const [isPromoChecked, setIsPromoChecked] = useState(false);
+
+  const toggleIsActiveChecked = () => setIsActiveChecked((state) => !state);
+  const toggleIsPromoChecked = () => setIsPromoChecked((state) => !state);
+
   return (
     <>
       <Logo />
@@ -14,6 +21,16 @@ export const Products = () => {
         Log in
       </SecondaryButton>
       <Searchbar />
+      <Checkbox
+        checked={isActiveChecked}
+        onChange={toggleIsActiveChecked}
+        label="Active"
+      />
+      <Checkbox
+        checked={isPromoChecked}
+        onChange={toggleIsPromoChecked}
+        label="Promo"
+      />
     </>
   );
 };
