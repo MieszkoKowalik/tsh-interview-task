@@ -1,5 +1,6 @@
-import { ReactComponent as CheckIcon } from 'assets/icons/icon-check.svg';
 import styled from 'styled-components';
+
+import { ReactComponent as CheckIcon } from 'assets/icons/icon-check.svg';
 
 export const StyledLabel = styled.label`
   display: flex;

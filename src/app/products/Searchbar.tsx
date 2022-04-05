@@ -1,5 +1,6 @@
-import { Input } from 'app/shared/Input';
 import { SearchbarWrapper, StyledSearchIcon } from './Searchbar.styles';
+
+import { Input } from 'app/shared/Input';
 
 export const Searchbar = () => {
   return (

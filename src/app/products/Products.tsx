@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { SecondaryButton } from 'app/shared/SecondaryButton';
-import { Logo } from 'app/shared/Logo';
 import { Searchbar } from './Searchbar';
-import { Checkbox } from 'app/shared/Checkbox';
 import {
   StyledHeader,
   FiltersWrapper,
   StyledContentWrapper,
 } from './Products.style';
+
+import { SecondaryButton } from 'app/shared/SecondaryButton';
+import { Logo } from 'app/shared/Logo';
+import { Checkbox } from 'app/shared/Checkbox';
 
 import { AppRoute } from 'routing/AppRoute.enum';
 
