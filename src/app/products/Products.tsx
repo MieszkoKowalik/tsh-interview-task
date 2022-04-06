@@ -10,6 +10,7 @@ import {
   GridTemplate,
 } from './Products.style';
 import { ProductsList } from './ProductsList/ProductsList';
+import { Searchbar } from './Searchbar/Searchbar';
 
 import { SecondaryButton } from 'app/shared/SecondaryButton';
 import { Logo } from 'app/shared/Logo';
