@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import { ContentWrapper } from 'app/shared/ContentWrapper';
 import { SecondaryButton } from 'app/shared/SecondaryButton';
 
+export const GridTemplate = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+`;
+
 export const StyledHeader = styled.header`
   padding: 52px 24px 32px;
   background-color: #fff;
@@ -39,4 +45,9 @@ export const FiltersWrapper = styled.div`
   @media (min-width: 768px) {
     grid-column: unset;
   }
+`;
+
+export const StyledMain = styled.main`
+  padding: 24px;
+  background-color: ${({ theme }) => theme.colors.neutral[100]};
 `;
