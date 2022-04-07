@@ -1,5 +1,5 @@
-import { Products } from 'models';
+import { ProductsData } from 'models';
 
 export type ProductsListProps = {
-  products: Products;
+  products: ProductsData;
 };

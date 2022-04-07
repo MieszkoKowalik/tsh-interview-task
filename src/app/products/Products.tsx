@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -15,17 +15,36 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { SecondaryButton } from 'app/shared/SecondaryButton';
 import { Logo } from 'app/shared/Logo';
 import { Checkbox } from 'app/shared/Checkbox';
-
-import { mockProducts } from 'mocks/products';
+import { Loader } from 'app/shared/Loader';
+import { getProducts } from 'api/getProducts';
 
 import { AppRoute } from 'routing/AppRoute.enum';
+import { ProductsData } from 'models';
+
+const LIMIT = 8;
 
 export const Products = () => {
   const [isActiveChecked, setIsActiveChecked] = useState(false);
   const [isPromoChecked, setIsPromoChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<ProductsData>([]);
 
   const toggleIsActiveChecked = () => setIsActiveChecked((state) => !state);
   const toggleIsPromoChecked = () => setIsPromoChecked((state) => !state);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      try {
+        const { items } = await getProducts({ limit: LIMIT });
+        setProducts(items);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   return (
     <GridTemplate>
@@ -55,7 +74,7 @@ export const Products = () => {
       </StyledHeader>
 
       <StyledMain>
-        <ProductsList products={mockProducts} />
+        {isLoading ? <Loader /> : <ProductsList products={products} />}
       </StyledMain>
     </GridTemplate>
   );
