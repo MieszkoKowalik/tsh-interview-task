@@ -33,10 +33,12 @@ export const Products = () => {
   const toggleIsPromoChecked = () => setIsPromoChecked((state) => !state);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
     (async () => {
       setIsLoading(true);
       try {
-        const { items } = await getProducts({ limit: LIMIT });
+        const { items } = await getProducts({ limit: LIMIT }, { signal });
         setProducts(items);
       } catch (e) {
         console.error(e);
@@ -44,6 +46,7 @@ export const Products = () => {
         setIsLoading(false);
       }
     })();
+    return () => controller.abort();
   }, []);
 
   return (
