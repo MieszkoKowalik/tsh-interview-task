@@ -11,7 +11,7 @@ const OFFSET = -CIRCUMFERENCE * 0.75;
 
 export const Loader = () => {
   return (
-    <LoaderWrapper>
+    <LoaderWrapper aria-label="Loading">
       <svg viewBox={`0 0 ${SIZE} ${SIZE}`} width={SIZE} height={SIZE}>
         <Track
           cx={CENTRE}
