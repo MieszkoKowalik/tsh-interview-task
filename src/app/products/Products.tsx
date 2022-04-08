@@ -35,10 +35,16 @@ export const Products = () => {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+
+    const filters = {
+      limit: LIMIT,
+      ...(isActiveChecked && { active: isActiveChecked }),
+      ...(isPromoChecked && { promo: isPromoChecked }),
+    };
     (async () => {
       setIsLoading(true);
       try {
-        const { items } = await getProducts({ limit: LIMIT }, { signal });
+        const { items } = await getProducts(filters, { signal });
         setProducts(items);
       } catch (e) {
         console.error(e);
@@ -47,7 +53,7 @@ export const Products = () => {
       }
     })();
     return () => controller.abort();
-  }, []);
+  }, [isPromoChecked, isActiveChecked]);
 
   return (
     <GridTemplate>

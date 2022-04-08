@@ -1,9 +1,12 @@
 import { buildUrl } from './buildUrl';
 
-import { getProductsParams, ProductsResponseData } from './ProductsApi.types';
+import {
+  PorductsRequestParams,
+  ProductsResponseData,
+} from './ProductsApi.types';
 
 export const getProducts = async (
-  params?: getProductsParams,
+  params?: PorductsRequestParams,
   init?: RequestInit
 ): Promise<ProductsResponseData> => {
   const BASE_URL = 'https://join-tsh-api-staging.herokuapp.com/products';

@@ -27,7 +27,7 @@ export type ProductsResponseData = {
   };
 };
 
-export type getProductsParams = {
+export type PorductsRequestParams = {
   search?: string;
   limit?: number;
   page?: number;
