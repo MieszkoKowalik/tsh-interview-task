@@ -1,5 +1,5 @@
-import { Product } from 'models';
+import { ProductData } from 'models';
 
 export type ProductCardProps = {
-  product: Product;
+  product: ProductData;
 };
