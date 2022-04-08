@@ -26,6 +26,7 @@ const LIMIT = 8;
 export const Products = () => {
   const [isActiveChecked, setIsActiveChecked] = useState(false);
   const [isPromoChecked, setIsPromoChecked] = useState(false);
+  const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<ProductsData>([]);
 
@@ -40,6 +41,7 @@ export const Products = () => {
       limit: LIMIT,
       ...(isActiveChecked && { active: isActiveChecked }),
       ...(isPromoChecked && { promo: isPromoChecked }),
+      search: search,
     };
     (async () => {
       setIsLoading(true);
@@ -53,7 +55,7 @@ export const Products = () => {
       }
     })();
     return () => controller.abort();
-  }, [isPromoChecked, isActiveChecked]);
+  }, [isPromoChecked, isActiveChecked, search]);
 
   return (
     <GridTemplate>
@@ -65,7 +67,7 @@ export const Products = () => {
             Log in
           </SecondaryButton>
 
-          <Searchbar />
+          <Searchbar value={search} onChange={setSearch} />
 
           <FiltersWrapper>
             <Checkbox

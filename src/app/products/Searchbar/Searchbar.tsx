@@ -2,10 +2,21 @@ import { SearchbarWrapper, StyledSearchIcon } from './Searchbar.styles';
 
 import { Input } from 'app/shared/Input';
 
-export const Searchbar = () => {
+type SearchbarProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export const Searchbar = ({ value, onChange }: SearchbarProps) => {
   return (
     <SearchbarWrapper>
-      <Input type="search" placeholder="Search" aria-label="Search" />
+      <Input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
       <StyledSearchIcon />
     </SearchbarWrapper>
   );
