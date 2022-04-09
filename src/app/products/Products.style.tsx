@@ -48,6 +48,11 @@ export const FiltersWrapper = styled.div`
 `;
 
 export const StyledMain = styled.main`
-  padding: 24px;
+  padding: 24px 24px 68px;
   background-color: ${({ theme }) => theme.colors.neutral[100]};
+
+  @media (min-width: 768px) {
+    padding: 56px;
+    padding-bottom: 56px;
+  }
 `;
