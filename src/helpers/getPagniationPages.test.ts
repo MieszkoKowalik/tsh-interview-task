@@ -14,11 +14,11 @@ describe('getPaginationPages function', () => {
   });
 
   it('Correctly returns page numbers when totalPages > 6 and currentPage = 3', () => {
-    expect(getPaginationPages(7, 3)).toEqual([2, 3, 4, '...', 5, 6, 7]);
+    expect(getPaginationPages(7, 3)).toEqual([2, 3, 4, 5, 6, 7]);
   });
 
   it('Correctly returns page numbers when totalPages > 6 and currentPage = totalPages - 3', () => {
-    expect(getPaginationPages(7, 4)).toEqual([2, 3, 4, '...', 5, 6, 7]);
+    expect(getPaginationPages(7, 4)).toEqual([2, 3, 4, 5, 6, 7]);
   });
 
   it('Correctly returns page numbers when totalPages > 6 and currentPage >= totalPages - 2', () => {
