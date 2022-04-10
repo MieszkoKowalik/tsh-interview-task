@@ -56,5 +56,6 @@ describe('Products page', () => {
     cy.contains('Show details').click();
     cy.findByRole('dialog').should('exist');
     cy.findByRole('dialog').type('{esc}');
+    cy.findByRole('dialog').should('not.exist');
   });
 });
