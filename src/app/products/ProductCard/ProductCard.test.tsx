@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen } from 'tests';
+import { render, screen, fireEvent } from 'tests';
 
 import { ProductCard } from './ProductCard';
 
@@ -45,5 +45,13 @@ describe('ProductCard', () => {
     render(<ProductCard product={mockPromoActiveProduct} />);
     expect(screen.getByText('Show details')).toBeEnabled();
     expect(screen.getByRole('img')).toHaveStyle('opacity: 1');
+  });
+
+  it('Opens, displays and closes "Show details" modal', () => {
+    render(<ProductCard product={mockPromoActiveProduct} />);
+    fireEvent.click(screen.getByText('Show details'));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText('Close'));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });

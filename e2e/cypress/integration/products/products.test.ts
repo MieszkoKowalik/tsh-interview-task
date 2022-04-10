@@ -51,4 +51,10 @@ describe('Products page', () => {
     cy.findByLabelText('Search').type('Non existing product');
     cy.findByText("Ooops... It's empty here");
   });
+
+  it('Displays and closes product details modal', () => {
+    cy.contains('Show details').click();
+    cy.findByRole('dialog').should('exist');
+    cy.findByRole('dialog').type('{esc}');
+  });
 });
