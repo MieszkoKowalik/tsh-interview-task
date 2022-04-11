@@ -7,6 +7,7 @@ export const Input = styled.input`
   border-radius: 8px;
   line-height: 16px;
   font-size: ${({ theme }) => theme.fontSize.s};
+  color: ${({ theme }) => theme.colors.neutral[900]};
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.neutral[700]};
