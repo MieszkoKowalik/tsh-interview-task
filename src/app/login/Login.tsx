@@ -1,28 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import {
+  LoginPageWrapper,
+  Image,
+  ContentWrapper,
+  StyledHeader,
+  LogoLink,
+  FormWrapper,
+  StyledLabel,
+  LoginButton,
+  ForgotPassword,
+} from './Login.styles';
+
+import { Input } from 'app/shared/Input';
+import { Logo } from 'app/shared/Logo';
 
 import { AppRoute } from 'routing/AppRoute.enum';
 
 export const Login = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
-    <>
-      <Link to={AppRoute.Home}>Products page</Link>
-      <h2>Login</h2>
-      <form>
-        <div>
-          <label>
-            username:
-            <input name="username" />
-          </label>
-        </div>
-        <div>
-          <label>
-            password:
-            <input name="password" type="password" />
-          </label>
-        </div>
-        <button type="submit">submit</button>
-      </form>
-    </>
+    <LoginPageWrapper>
+      <Image />
+
+      <ContentWrapper>
+        <StyledHeader>
+          <LogoLink to={AppRoute.Home}>
+            <Logo />
+          </LogoLink>
+        </StyledHeader>
+
+        <FormWrapper>
+          <h2>Login</h2>
+          <form onSubmit={handleSubmit}>
+            <StyledLabel>
+              Username
+              <Input required placeholder="Enter username" name="username" />
+            </StyledLabel>
+
+            <StyledLabel>
+              Password
+              <Input
+                required
+                placeholder="Enter password"
+                name="password"
+                type="password"
+              />
+            </StyledLabel>
+
+            <LoginButton type="submit">Log in</LoginButton>
+          </form>
+          <ForgotPassword to="#">Forgot password?</ForgotPassword>
+        </FormWrapper>
+      </ContentWrapper>
+    </LoginPageWrapper>
   );
 };
