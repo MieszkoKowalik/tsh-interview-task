@@ -14,6 +14,7 @@ export const Backdrop = styled.div`
   inset: 0;
   width: 100%;
   background-color: ${({ theme }) => `${theme.colors.neutral[900]}e5`};
+  z-index: 900;
 `;
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -25,6 +26,7 @@ export const ModalWrapper = styled.div`
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
+  z-index: 910;
 `;
 
 export const CloseButton = styled.button`
