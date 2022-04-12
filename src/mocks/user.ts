@@ -1,7 +1,8 @@
 import { User } from 'models';
+import AvatarSrc from 'assets/images/avatar.png';
 
 export const mockUser: User = {
   id: 2,
   username: 'string',
-  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/dzantievm/128.jpg',
+  avatar: AvatarSrc,
 };
