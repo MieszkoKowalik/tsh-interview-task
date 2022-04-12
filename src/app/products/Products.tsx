@@ -8,16 +8,19 @@ import {
   StyledContentWrapper,
   StyledMain,
   GridTemplate,
+  UserWrapper,
 } from './Products.style';
 import { ProductsList } from './ProductsList/ProductsList';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Pagination } from './Pagination/Pagination';
+import UserMenu from './UserMenu/UserMenu';
 
 import { SecondaryButton } from 'app/shared/SecondaryButton';
 import { Logo } from 'app/shared/Logo';
 import { Checkbox } from 'app/shared/Checkbox';
 import { Loader } from 'app/shared/Loader';
 import { getProducts } from 'api/getProducts';
+import { useAuth } from 'providers/AuthProvider';
 
 import { AppRoute } from 'routing/AppRoute.enum';
 import { ProductsData } from 'models';
@@ -32,6 +35,8 @@ export const Products = () => {
   const [products, setProducts] = useState<ProductsData>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
+
+  const { user } = useAuth();
 
   const toggleIsActiveChecked = () => setIsActiveChecked((state) => !state);
   const toggleIsPromoChecked = () => setIsPromoChecked((state) => !state);
@@ -75,9 +80,15 @@ export const Products = () => {
         <StyledContentWrapper>
           <Logo />
 
-          <SecondaryButton as={Link} to={AppRoute.Login}>
-            Log in
-          </SecondaryButton>
+          <UserWrapper>
+            {user ? (
+              <UserMenu user={user} />
+            ) : (
+              <SecondaryButton as={Link} to={AppRoute.Login}>
+                Log in
+              </SecondaryButton>
+            )}
+          </UserWrapper>
 
           <Searchbar value={search} onChange={setSearch} />
 

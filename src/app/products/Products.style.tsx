@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { ContentWrapper } from 'app/shared/ContentWrapper';
-import { SecondaryButton } from 'app/shared/SecondaryButton';
 
 export const GridTemplate = styled.div`
   display: grid;
@@ -27,14 +26,6 @@ export const StyledContentWrapper = styled(ContentWrapper)`
   @media (min-width: 768px) {
     grid-template-columns: minmax(auto, 207px) minmax(220px, 392px) auto auto;
   }
-
-  ${SecondaryButton} {
-    justify-self: end;
-
-    @media (min-width: 768px) {
-      order: 1;
-    }
-  }
 `;
 
 export const FiltersWrapper = styled.div`
@@ -54,5 +45,13 @@ export const StyledMain = styled.main`
   @media (min-width: 768px) {
     padding: 56px;
     padding-bottom: 56px;
+  }
+`;
+
+export const UserWrapper = styled.div`
+  justify-self: end;
+
+  @media (min-width: 768px) {
+    order: 1;
   }
 `;
