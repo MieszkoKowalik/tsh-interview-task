@@ -3,13 +3,13 @@ import React, { ReactNode } from 'react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Queries } from '@testing-library/dom';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'assets/styles/theme';
+
+import { AppProviders } from 'providers/AppProviders';
 
 const Wrapper = ({ children }: { children?: ReactNode }) => {
   return (
     <Router>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <AppProviders>{children}</AppProviders>
     </Router>
   );
 };
