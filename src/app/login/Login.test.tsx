@@ -5,7 +5,7 @@ import { render, screen } from 'tests';
 import { Login } from './Login';
 
 describe('Login', () => {
-  test('Displays all information', () => {
+  it('Displays all information', () => {
     render(<Login />);
 
     expect(screen.getByText('Login')).toBeInTheDocument();

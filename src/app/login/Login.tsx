@@ -16,10 +16,20 @@ import { Input } from 'app/shared/Input';
 import { Logo } from 'app/shared/Logo';
 
 import { AppRoute } from 'routing/AppRoute.enum';
+import { useAuth } from 'providers/AuthProvider';
+
+import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
+  const { logIn } = useAuth();
+
+  const history = useHistory();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    logIn();
+    history.replace(AppRoute.Home);
   };
 
   return (
